@@ -14,8 +14,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
+  { path: 'about/:alias', component: AboutComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'about/information-company', component: AboutComponent},
   { path: 'product-service', component: ProductServiceComponent},
   { path: 'strengths', component: StrengthsComponent},
   { path: 'benefit', component: BenefitComponent},

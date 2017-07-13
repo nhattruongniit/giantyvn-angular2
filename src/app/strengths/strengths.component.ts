@@ -11,8 +11,11 @@ export class StrengthsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { 
 
+  }
+
+  ngAfterViewInit(){
     //section 3D
     var drags = (dragElement, resizeElement, container) => {
         dragElement.on("mousedown vmousedown", (e) => {

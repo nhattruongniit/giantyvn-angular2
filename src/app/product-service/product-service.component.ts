@@ -9,7 +9,10 @@ export class ProductServiceComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {    
+  }  
+  
+  ngAfterViewInit(){
     $(".owl-products").slick({
       infinite: true,
       slidesToShow: 1,
@@ -26,7 +29,6 @@ export class ProductServiceComponent implements OnInit {
       nav:false,
       lazyLoad: 'ondemand',
     });
-
   }
 
 }

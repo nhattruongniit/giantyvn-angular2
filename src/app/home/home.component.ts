@@ -14,7 +14,11 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   $(".slider__banner").slick({
+   
+  }
+
+  ngAfterViewInit(){
+    $(".slider__banner").slick({
       infinite: true,
       slidesToShow: 1,
       slidesToScroll:1,
