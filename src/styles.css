@@ -55,7 +55,6 @@ body {
     color: #414141;
     overflow-x: hidden;
     font-weight: 300;
-    background: #F00;
 }
 
 p {
@@ -152,11 +151,13 @@ h1 {
     -ms-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+    background-color: #D6D6D6;
     border: 1px solid #FFF;
 }
 
-.slick-dots li.slick-active {
-    background-color: #FFF;
+.slick-dots li.slick-active,
+.slick-dots li:hover {
+    background-color: #3c4f8c;
 }
 
 .slick-dots li button {
@@ -416,6 +417,26 @@ h1 {
 }
 
 
+/*------------------- page home --------------------*/
+
+.googleMap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #c3bfbf;
+}
+
+.googleMap iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
 /*-------------------Index--------------------*/
 
 .banner {
@@ -491,7 +512,6 @@ h1 {
 }
 
 .services .services-item {
-    opacity: 0;
     margin-top: 25px;
 }
 
@@ -1144,19 +1164,24 @@ h1 {
     height: 37px;
 }
 
-.slider__wrapper {
+.slider__products {
     margin: 30px 0px 0px 0px;
     min-height: 470px;
+    position: relative;
 }
 
-.slider .owl-carousel {
-    opacity: 0;
-    position: absolute;
+.slider__products img {
+    display: inline-block;
 }
 
-.slider .owl-carousel h4 {
+.slider__products h4 {
     font-size: 32px;
-    font-weight: 500;
+}
+
+.slick-public {
+    opacity: 0;
+    width: 100%;
+    position: absolute;
 }
 
 .slider__more {
@@ -1806,7 +1831,6 @@ h1 {
 /*------------------------Jobs---------------------*/
 
 .jobs .jobs-item {
-    opacity: 0;
     color: #000;
     text-align: center;
     margin-top: 35px;

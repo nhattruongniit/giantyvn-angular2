@@ -8,18 +8,18 @@
                 <span class="icon-bar"></span>
             </button>
                 <div class="header__logo">
-                    <a class="header__logo--pc" href="/"></a>
-                    <a class="header__logo--mobile" href="/"></a>
+                    <a class="header__logo--pc" routerLink="/"></a>
+                    <a class="header__logo--mobile" routerLink="/"></a>
                 </div>
                 <div class="header__menu">
                     <ul>
                         <li class="drop_menu">
-                            <a routerLink="/about" class="">Về chúng tôi</a>
+                            <a routerLink="/about" routerLinkActive="active" class="">Về chúng tôi</a>
                             <div class="arrow-mobile">
                                 <b class="caret"></b>
                             </div>
                             <ul class="header__submenu">
-                                <li><a href="about.html#companyInfo_bm">Thông tin công ty</a></li>
+                                <li><a routerLink="/about/information-company" (click)="clickRouter(nameRouter)" #nameRouter>Thông tin công ty</a></li>
                                 <!--<li><a href="about.html#ceo_message_bm">Thông điệp từ CEO</a></li>-->
                                 <li><a href="about.html#management_board">Ban lãnh đạo</a></li>
                                 <li><a href="about.html#history_bm">Lịch sử hình thành</a></li>
