@@ -66,8 +66,5 @@ export class HeaderComponent implements OnInit {
     /* === END MENU HEADER === */
   }
 
-  clickRouter(name){
-    console.log(name);
-  }
 
 }

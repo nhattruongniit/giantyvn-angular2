@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     .filter(event => event instanceof NavigationStart)
     .subscribe((event:NavigationStart) => {
       // You only receive NavigationStart events
-      console.log(event)
+      console.log(event.url);
     });
   }
 
