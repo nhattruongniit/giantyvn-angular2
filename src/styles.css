@@ -419,6 +419,10 @@ h1 {
 
 /*------------------- page home --------------------*/
 
+#map {
+    height: 400px;
+}
+
 .googleMap {
     position: relative;
     width: 100%;
@@ -2884,10 +2888,6 @@ a[name='testing_bm'] {
     display: inline-block;
 }
 
-.header__menu ul li.drop_menu {
-    padding: 15px 15px 0px 15px;
-}
-
 .header__menu ul li a {
     outline: none;
     font-weight: 300;
@@ -3174,6 +3174,13 @@ a[name='testing_bm'] {
         left: -5%;
     }
     /* END PAGE BENEFIT */
+}
+
+
+/*--- footer ---*/
+
+footer .security ul li a.active {
+    border-bottom: 1px solid rgba(11, 10, 10, 0.5);
 }
 
 @media screen and (max-width: 1280px) {

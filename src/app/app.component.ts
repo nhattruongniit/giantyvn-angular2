@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { Router } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from '@angular/router';
 import { Location } from '@angular/common';
+import 'rxjs/add/operator/filter';
 
 
 @Component({
@@ -14,10 +15,16 @@ export class AppComponent implements OnInit {
       private router: Router,
       private location: Location
     ){
-   
+    router.events
+    .filter(event => event instanceof NavigationStart)
+    .subscribe((event:NavigationStart) => {
+      // You only receive NavigationStart events
+      console.log(event)
+    });
   }
 
   ngOnInit(){
+      console.log('start app.component');
         // this.router.events.subscribe(() => {
         //     let currentRouter = this.location.path();
                 
@@ -36,55 +43,7 @@ export class AppComponent implements OnInit {
         //     }
 
         // });
-        //menu for PC
-        $('body, html').find('.drop_menu').hover(function() {
-            $(this).find('.header__submenu').addClass("in");
-            $(this).find('>a').addClass('hover');
-        }, function() {
-            $(this).find('.header__submenu').removeClass("in");
-            $(this).find('>a').removeClass('hover');
-        });
-        // menu for mobile
-        $('body, html').find('.navbar-toggle').click(function() {
-            $('.header__menu').toggleClass('in');
-        });
-        $('body, html').find('.arrow-mobile').click(function() {
-            $(this).find(".caret").toggleClass('display');
-            $(this).siblings('.header__submenu').toggleClass('display');
-        });
-
-        $('body, html').find('.header__submenu li > a').click(function() {
-            $(this).parents().parents(".header__menu").toggleClass('in');
-            $(this).parents(".header__submenu").toggleClass('in');
-            $(this).parents(".header__submenu").toggleClass('display');
-        });
-
-        /* === START MENU HEADER === */
-        var scrolllTop = $(window).scrollTop();
-        if (scrolllTop > 0) {
-            $('.header').addClass("fixed");
-            $('.header__logo--pc').addClass("header__logo--change");
-            $('.buttonTop').show();
-        } else {
-            $('.header').removeClass("fixed");
-            $('.header__logo--pc').removeClass("header__logo--change");
-            $('.buttonTop').hide();
-        }
-
-        $(window).scroll(function() {
-            var scrollChange = $(window).scrollTop();
-            if (scrollChange > 0) {
-                $('.header').addClass("fixed");
-                $('.header__logo--pc').addClass("header__logo--change");
-                $('.buttonTop').show();
-            } else {
-                $('.header').removeClass("fixed");
-                $('.header__logo--pc').removeClass("header__logo--change");
-                $('.buttonTop').hide();
-            }
-        })
-
-        /* === END MENU HEADER === */
+        
   }
 
   title = 'app';
