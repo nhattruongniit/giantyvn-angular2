@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import 'slick-carousel/slick/slick';
+// import 'slick-carousel/slick/slick';
+
+declare let require: any;
+require('../../../node_modules/slick-carousel/slick/slick.min.js');
 
 @Component({
   selector: 'app-home',

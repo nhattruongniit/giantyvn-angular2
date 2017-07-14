@@ -6,7 +6,8 @@ import 'slick-carousel/slick/slick';
 // import 'venobox/venobox/venobox';
 // import 'isotope-layout/dist/isotope.pkgd.min';
 
-declare var require: any;
+declare let require: any;
+require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
 require('../../../node_modules/venobox/venobox/venobox.min.js');
 require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
 
@@ -17,19 +18,6 @@ require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
 export class StrengthsComponent implements OnInit {
   leftValue: number;
   widthValue: string;
-
-//   bricks = [
-//      {image: 'assets/images/strength/loadmore/3D/default01.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default02.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default03.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default041.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default051.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default066.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default07.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default08.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default091.jpg'},
-//      {image: 'assets/images/strength/loadmore/3D/default101.jpg'}
-//    ]
 
   constructor() { }
 
@@ -179,27 +167,42 @@ export class StrengthsComponent implements OnInit {
     //     };
     // });
     $portfolio = $('.gallery_items').isotope({
-            itemSelector: '.grid-item',
-            percentPosition: true,
-            filter: '.3D',
-            resizesContainer: true,
-            layoutMode: 'masonry',
-            resizable: false
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        filter: '.3D',
+        resizesContainer: false,
+        layoutMode: 'masonry',
+        resizable: false
     });
     $('.filter-proj ul li > a').on('click', function() {
-            var dataFilter = $(this).attr('data-filter');
-            if (dataFilter !== '*') {
-                $('#load-more-image').hide();
-            } else {
-                $('#load-more-image').show();
-            }
-            $('.filter-proj ul li a').removeClass('active');
-            $(this).addClass('active');
-            var selector = $(this).attr('data-filter');
-            $portfolio.isotope({
-                filter: selector,
-            });
+        var dataFilter = $(this).attr('data-filter');
+        if (dataFilter !== '*') {
+            $('#load-more-image').hide();
+        } else {
+            $('#load-more-image').show();
+        }
+        $('.filter-proj ul li a').removeClass('active');
+        $(this).addClass('active');
+        var selector = $(this).attr('data-filter');
+        $portfolio.isotope({
+            filter: selector,
         });
+    });
+    // check load video
+    let $video = $('.portfolio_video').find('.video');
+    let videoLoad = document.querySelector('.video');
+
+    function checkLoad() {
+        videoLoad.addEventListener('loadeddata', function(){
+            $('.portfolio_video .loading').css("z-index", "-1");
+            $('.portfolio_video').hover(function() {
+                $(this).find('.video').get(0).play();
+            }, function() {
+                $(this).find('.video').get(0).pause();
+            });
+        })
+    }
+    checkLoad();
   }
 
 }
