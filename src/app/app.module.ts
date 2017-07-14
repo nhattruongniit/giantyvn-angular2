@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 // routing
 import { AppRoutingModule } from './app.routing';
 
+import { MasonryModule } from 'angular2-masonry';
 
 // component
 import { AppComponent } from './app.component';
@@ -36,7 +37,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MasonryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

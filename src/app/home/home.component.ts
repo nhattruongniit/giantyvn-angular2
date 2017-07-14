@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-
 import 'slick-carousel/slick/slick';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   timeEffect: any;

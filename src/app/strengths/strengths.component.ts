@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import 'slick-carousel/slick/slick';
+import 'venobox/venobox/venobox';
+// import 'imagesloaded/imagesloaded.pkgd.min';
 
 @Component({
   selector: 'app-strengths',
@@ -8,6 +11,19 @@ import * as $ from 'jquery';
 export class StrengthsComponent implements OnInit {
   leftValue: number;
   widthValue: string;
+
+//   bricks = [
+//      {image: 'assets/images/strength/loadmore/3D/default01.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default02.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default03.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default041.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default051.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default066.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default07.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default08.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default091.jpg'},
+//      {image: 'assets/images/strength/loadmore/3D/default101.jpg'}
+//    ]
 
   constructor() { }
 
@@ -59,7 +75,7 @@ export class StrengthsComponent implements OnInit {
 
     
     $('.cd-image-container').map((k, v) =>{
-        drags( $(v).find('.cd-handle'),$ (v).find('.cd-resize-img'),  $(v));
+        drags( $(v).find('.cd-handle'),$(v).find('.cd-resize-img'),  $(v));
     })
 
     //section 2D 
@@ -100,8 +116,62 @@ export class StrengthsComponent implements OnInit {
         effectSketch.map((k,v) =>{
            $(v).addClass(arrClass[k]);
         })
+    });  
+    $('.slider_sketch').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll:1,
+        cssEase: 'ease-in-out',
+        autoplay:false,
+        autoplaySpeed: 1000,
+        draggable: true,
+        focusOnSelect: false,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        arrows:false,      
+        dots: true,
+        nav:false,
+        lazyLoad: 'ondemand'
     });
 
+    //section gallery
+    var initVenoBox = function() {       
+        $('.venobox_custom').venobox({
+            border: '2px', // default: '0'
+            bgcolor: '#fff', // default: '#fff'
+            numeratio: false, // default: false
+            infinigall: false, // default: false,
+            spinner: 'wave',
+        });
+    }
+    //initVenoBox();
+    // let $portfolio;
+    // $('.image_loded').imagesloaded(function() {
+    //     if ($.fn.isotope) {
+    //         $portfolio = $('.gallery_items').isotope({
+    //             itemSelector: '.grid-item',
+    //             percentPosition: true,
+    //             filter: '.3D',
+    //             resizesContainer: true,
+    //             layoutMode: 'masonry',
+    //             resizable: false
+    //         });
+    //         $('.filter-proj ul li > a').on('click', function() {
+    //             var dataFilter = $(this).attr('data-filter');
+    //             if (dataFilter !== '*') {
+    //                 $('#load-more-image').hide();
+    //             } else {
+    //                 $('#load-more-image').show();
+    //             }
+    //             $('.filter-proj ul li a').removeClass('active');
+    //             $(this).addClass('active');
+    //             var selector = $(this).attr('data-filter');
+    //             $portfolio.isotope({
+    //                 filter: selector,
+    //             });
+    //         });
+    //     };
+    // });
   }
 
 }
