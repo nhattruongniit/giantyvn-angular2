@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+window['$'] = window['jQuery'] = $;
 import 'slick-carousel/slick/slick';
-import 'venobox/venobox/venobox';
 // import 'imagesloaded/imagesloaded.pkgd.min';
+// import 'venobox/venobox/venobox';
+// import 'isotope-layout/dist/isotope.pkgd.min';
+
+declare var require: any;
+require('../../../node_modules/venobox/venobox/venobox.min.js');
+require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
 
 @Component({
   selector: 'app-strengths',
@@ -144,8 +150,8 @@ export class StrengthsComponent implements OnInit {
             spinner: 'wave',
         });
     }
-    //initVenoBox();
-    // let $portfolio;
+    initVenoBox();
+    let $portfolio;
     // $('.image_loded').imagesloaded(function() {
     //     if ($.fn.isotope) {
     //         $portfolio = $('.gallery_items').isotope({
@@ -172,6 +178,28 @@ export class StrengthsComponent implements OnInit {
     //         });
     //     };
     // });
+    $portfolio = $('.gallery_items').isotope({
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            filter: '.3D',
+            resizesContainer: true,
+            layoutMode: 'masonry',
+            resizable: false
+    });
+    $('.filter-proj ul li > a').on('click', function() {
+            var dataFilter = $(this).attr('data-filter');
+            if (dataFilter !== '*') {
+                $('#load-more-image').hide();
+            } else {
+                $('#load-more-image').show();
+            }
+            $('.filter-proj ul li a').removeClass('active');
+            $(this).addClass('active');
+            var selector = $(this).attr('data-filter');
+            $portfolio.isotope({
+                filter: selector,
+            });
+        });
   }
 
 }
