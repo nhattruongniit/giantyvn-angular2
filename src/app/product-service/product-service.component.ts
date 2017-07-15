@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -7,9 +9,15 @@ import * as $ from 'jquery';
 })
 export class ProductServiceComponent implements OnInit {
 
-  constructor() { }
+  private alias: string;
+  private sub: any;
 
-  ngOnInit() {    
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() { 
   }  
   
   ngAfterViewInit(){
@@ -29,6 +37,46 @@ export class ProductServiceComponent implements OnInit {
       nav:false,
       lazyLoad: 'ondemand',
     });
+
+    this.sub = this.route.params.subscribe(params => {   
+      this.alias = params.alias;
+      let scrollTop = (name) => {
+        $('html,body').animate({
+          scrollTop: $(name).offset().top - 80
+        },'slow');
+      }      
+      if(this.alias != undefined){ 
+        $('.loading').hide();
+        switch (this.alias){
+          case 'games':
+            scrollTop('.panel_games');
+            break;
+          case 'mobile-apps':
+            scrollTop('.panel_mobile');
+            break;
+          case 'offshore':
+            scrollTop('.panel_offshore');
+            break;
+          case 'solution-outsourcing':
+            scrollTop('.outsourcing');
+            break;
+          case 'testing':
+            scrollTop('.panel_testing');
+            break;
+          case 'monitoring':
+            scrollTop('.panel_monitoring');
+            break;
+          default:
+            scrollTop('.panel_cloud');
+            break;
+        }
+      }
+    });      
+  }
+
+  
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

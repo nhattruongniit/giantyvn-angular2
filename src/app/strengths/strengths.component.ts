@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import * as $ from 'jquery';
 window['$'] = window['jQuery'] = $;
 import 'slick-carousel/slick/slick';
-// import 'imagesloaded/imagesloaded.pkgd.min';
-// import 'venobox/venobox/venobox';
-// import 'isotope-layout/dist/isotope.pkgd.min';
 
 declare let require: any;
 require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
@@ -16,45 +15,73 @@ require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
   templateUrl: './strengths.component.html'
 })
 export class StrengthsComponent implements OnInit {
-  leftValue: number;
-  widthValue: string;
 
-  constructor() { }
+    private alias: string;
+    private sub: any;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() { 
 
   }
 
   ngAfterViewInit(){
+    //routing 
+    this.sub = this.route.params.subscribe(params => {   
+      this.alias = params.alias;
+      let scrollTop = (name) => {
+        $('html,body').animate({
+          scrollTop: $(name).offset().top - 80
+        },'slow');
+      }      
+      if(this.alias != undefined){ 
+        $('.loading').hide();
+        switch (this.alias){
+          case 'technology':
+            scrollTop('.technology');
+            break;
+          case 'art-desgin':
+            scrollTop('.panel_art');
+            break;
+          default:
+            scrollTop('.panel_gallery');
+            break;
+        }
+      }
+    });      
+
     //section 3D
-    var drags = (dragElement, resizeElement, container) => {
+    let drags = (dragElement, resizeElement, container) => {
         dragElement.on("mousedown vmousedown", (e) => {
             dragElement.addClass('draggable');
             resizeElement.addClass('resizable');
-            var dragWidth = dragElement.outerWidth(),
+            let dragWidth = dragElement.outerWidth(),
                 xPosition = dragElement.offset().left + dragWidth - e.pageX,
                 containerOffset = container.offset().left,
                 containerWidth = container.outerWidth(),
                 minLeft = containerOffset + 10,
                 maxLeft = containerOffset + containerWidth - dragWidth - 10;
             dragElement.parents().on("mousemove vmousemove", (e) => {
-                this.leftValue = e.pageX + xPosition - dragWidth;
+                let leftValue = e.pageX + xPosition - dragWidth;
 
-                if (this.leftValue < minLeft) {
-                    this.leftValue = minLeft;
-                } else if (this.leftValue > maxLeft) {
-                    this.leftValue = maxLeft;
+                if (leftValue < minLeft) {
+                    leftValue = minLeft;
+                } else if (leftValue > maxLeft) {
+                    leftValue = maxLeft;
                 }
 
-                this.widthValue = (this.leftValue + dragWidth / 2 - containerOffset) * 100 / containerWidth + '%';
+                let widthValue = (leftValue + dragWidth / 2 - containerOffset) * 100 / containerWidth + '%';
 
-                $('.draggable').css('left', this.widthValue).on("mouseup vmouseup ", (e) => {
+                $('.draggable').css('left', widthValue).on("mouseup vmouseup ", (e) => {
                   let $this = $(e.currentTarget);
                   $this.removeClass('draggable');
                   resizeElement.removeClass('resizable');
                 });
 
-                $('.resizable').css('width', this.widthValue);
+                $('.resizable').css('width', widthValue);
 
             }).on("mouseup vmouseup ", (e) => {
                 dragElement.removeClass('draggable');
@@ -75,10 +102,9 @@ export class StrengthsComponent implements OnInit {
     //section 2D 
     let effect = $('.right-effect-madzone .effect-public');
     let arrClass = ['effect-1', 'effect-2', 'effect-3'];
-
-    var eleRemove = (_effect) => {
+    let eleRemove = (_effect) => {
         _effect.removeClass('active');
-        for (var i = 1; i < _effect.length + 1; i++) {
+        for (let i = 1; i < _effect.length + 1; i++) {
             _effect.removeClass("effect-" + i)
         }
     };
@@ -106,11 +132,11 @@ export class StrengthsComponent implements OnInit {
                   arrClass = ['effect-1', 'effect-2', 'effect-3'];
               }
         };
-
         effectSketch.map((k,v) =>{
            $(v).addClass(arrClass[k]);
         })
     });  
+
     $('.slider_sketch').slick({
         infinite: true,
         slidesToShow: 1,
@@ -129,7 +155,7 @@ export class StrengthsComponent implements OnInit {
     });
 
     //section gallery
-    var initVenoBox = function() {       
+    let initVenoBox = () => {       
         $('.venobox_custom').venobox({
             border: '2px', // default: '0'
             bgcolor: '#fff', // default: '#fff'
@@ -139,33 +165,8 @@ export class StrengthsComponent implements OnInit {
         });
     }
     initVenoBox();
+
     let $portfolio;
-    // $('.image_loded').imagesloaded(function() {
-    //     if ($.fn.isotope) {
-    //         $portfolio = $('.gallery_items').isotope({
-    //             itemSelector: '.grid-item',
-    //             percentPosition: true,
-    //             filter: '.3D',
-    //             resizesContainer: true,
-    //             layoutMode: 'masonry',
-    //             resizable: false
-    //         });
-    //         $('.filter-proj ul li > a').on('click', function() {
-    //             var dataFilter = $(this).attr('data-filter');
-    //             if (dataFilter !== '*') {
-    //                 $('#load-more-image').hide();
-    //             } else {
-    //                 $('#load-more-image').show();
-    //             }
-    //             $('.filter-proj ul li a').removeClass('active');
-    //             $(this).addClass('active');
-    //             var selector = $(this).attr('data-filter');
-    //             $portfolio.isotope({
-    //                 filter: selector,
-    //             });
-    //         });
-    //     };
-    // });
     $portfolio = $('.gallery_items').isotope({
         itemSelector: '.grid-item',
         percentPosition: true,
@@ -174,25 +175,26 @@ export class StrengthsComponent implements OnInit {
         layoutMode: 'masonry',
         resizable: false
     });
-    $('.filter-proj ul li > a').on('click', function() {
-        var dataFilter = $(this).attr('data-filter');
+    $('.filter-proj ul li > a').on('click', (e) => {
+        let $this = $(e.currentTarget);
+        let dataFilter = $this.attr('data-filter');
         if (dataFilter !== '*') {
             $('#load-more-image').hide();
         } else {
             $('#load-more-image').show();
         }
         $('.filter-proj ul li a').removeClass('active');
-        $(this).addClass('active');
-        var selector = $(this).attr('data-filter');
+        $this.addClass('active');
+        let selector = $this.attr('data-filter');
         $portfolio.isotope({
             filter: selector,
         });
     });
+    
     // check load video
     let $video = $('.portfolio_video').find('.video');
     let videoLoad = document.querySelector('.video');
-
-    function checkLoad() {
+    let checkLoad = () => {
         videoLoad.addEventListener('loadeddata', function(){
             $('.portfolio_video .loading').css("z-index", "-1");
             $('.portfolio_video').hover(function() {

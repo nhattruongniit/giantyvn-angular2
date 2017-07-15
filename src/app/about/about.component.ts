@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute  } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -13,21 +13,36 @@ export class AboutComponent implements OnInit,OnDestroy {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute
   ) {
+  }
 
-   }
+  ngOnInit() {
+  }
 
-  async ngOnInit() {
-     this.sub = await this.route.params.subscribe(params => {
-       this.alias = params.alias
-    });
-    if(this.alias === 'information-company') {
-      $('html,body').animate({
-        scrollTop: $(".about_intro").offset().top - 80
-      },'slow');
-    }
-   // console.log(this.alias)
+  ngAfterViewInit(){      
+    this.sub = this.route.params.subscribe(params => {   
+      this.alias = params.alias;
+      let scrollTop = (name) => {
+        $('html,body').animate({
+          scrollTop: $(name).offset().top - 80
+        },'slow');
+      }      
+      if(this.alias != undefined){ 
+        $('.loading').hide();
+        switch (this.alias){
+          case 'information-company':
+            scrollTop('.about_intro');
+            break;
+          case 'management':
+            scrollTop('.management');
+            break;
+          default:
+            scrollTop('.history');
+            break;
+        }
+      }
+    });   
   }
 
   ngOnDestroy() {

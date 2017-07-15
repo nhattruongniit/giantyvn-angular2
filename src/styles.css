@@ -2054,23 +2054,29 @@ h1 {
 }
 
 .jobs_advice .wizard .nav-tabs li span {
-    background: url(/assets/images/advice1.png) no-repeat;
+    background: url(/assets/images/advice1.png) no-repeat 0px 0px;
     position: absolute;
     width: 250px;
     height: 100px;
     top: -100px;
 }
 
-.jobs_advice .wizard .nav-tabs li .advice1 {
-    background-position: 0 50%;
-}
-
-.jobs_advice .wizard .nav-tabs li .advice2 {
+.jobs_advice .wizard .nav-tabs li a span.advice2 {
     background-position: 50% 50%;
 }
 
-.jobs_advice .wizard .nav-tabs li .advice3 {
-    background-position: 100%;
+.jobs_advice .wizard .nav-tabs li a span.advice3 {
+    background-position: 100%
+}
+
+.jobs_advice .wizard .nav-tabs li a.active span.advice2,
+.jobs_advice .wizard .nav-tabs li a:hover span.advice2 {
+    background: url(/assets/images/advice.png) no-repeat 50% 50%;
+}
+
+.jobs_advice .wizard .nav-tabs li a.active span.advice3,
+.jobs_advice .wizard .nav-tabs li a:hover span.advice3 {
+    background: url(/assets/images/advice.png) no-repeat 100%;
 }
 
 .jobs_advice .wizard li:after {
@@ -2098,44 +2104,18 @@ h1 {
     border: none;
 }
 
-.jobs_advice .wizard .nav-tabs>li a:hover,
-.jobs_advice .wizard .nav-tabs>li.active>a {
-    background: transparent;
+.jobs_advice .wizard .nav-tabs li a.active,
+.jobs_advice .wizard .nav-tabs li a:hover {
     color: #000;
     cursor: pointer;
-    border: 0;
-    border-bottom-color: transparent;
+    background-color: transparent;
 }
 
-.jobs_advice .wizard .nav-tabs>li a:hover span,
-.jobs_advice .wizard .nav-tabs>li.active>a span {
-    background: url(/assets/images/advice.png) no-repeat;
-}
-
-.jobs_advice .wizard .nav-tabs>li a:hover .advice1,
-.jobs_advice .wizard .nav-tabs>li.active>a .advice1 {
-    background-position: 0 50% !important;
-}
-
-.jobs_advice .wizard .nav-tabs>li a:hover .advice2,
-.jobs_advice .wizard .nav-tabs>li.active>a .advice2 {
-    background-position: 50% 50% !important;
-}
-
-.jobs_advice .wizard .nav-tabs>li a:hover .advice3,
-.jobs_advice .wizard .nav-tabs>li.active>a .advice3 {
-    background-position: 100% !important;
-}
-
-.jobs_advice .wizard .tab-pane {
-    position: relative;
-    padding-top: 50px;
-}
-
-a[name='testing_bm'] {
-    height: 1px;
-    width: 100%;
-    display: block;
+.jobs_advice .wizard ul li a.active .advice1,
+.jobs_advice .wizard ul li a:hover .advice1 {
+    background: url(./assets/images/advice.png) no-repeat 0px 0px;
+    color: #000;
+    cursor: pointer;
 }
 
 .outsourcing {
@@ -2824,7 +2804,7 @@ a[name='testing_bm'] {
 .header.fixed .header__menu ul li a.active {
     border-bottom: 2px solid #3c4f8c;
     color: #3c4f8c;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .header.fixed .header__menu ul li.current-menu-item {
@@ -2844,6 +2824,7 @@ a[name='testing_bm'] {
 
 .header.fixed .header__menu .header__submenu li a.active {
     border-bottom: 0px;
+    font-weight: 500;
 }
 
 .header.fixed .caret {
@@ -3002,6 +2983,12 @@ a[name='testing_bm'] {
 
 
 /*=== START LOADING ===*/
+
+app-loading {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
 
 .loading {
     position: fixed;

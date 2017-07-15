@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 // routing
 import { AppRoutingModule } from './app.routing';
 
-import { MasonryModule } from 'angular2-masonry';
-
 // component
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +17,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +32,12 @@ import { FooterComponent } from './footer/footer.component';
     PrivacyComponent,
     PageNotFoundComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    MasonryModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

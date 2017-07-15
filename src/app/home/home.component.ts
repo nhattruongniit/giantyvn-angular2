@@ -10,7 +10,6 @@ require('../../../node_modules/slick-carousel/slick/slick.min.js');
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  timeEffect: any;
 
   constructor() { }
 
@@ -55,18 +54,19 @@ export class HomeComponent implements OnInit {
     });
 
     if ($('.info-img--effect').length != 0) {
-        this.timeEffect = setTimeout(function() {
-            clearTimeout(this.timeEffect);
+        let timeEffect = setTimeout(function() {
+            clearTimeout(timeEffect);
             $('.info-img--effect').addClass("effect");
         }, 2000)
     };
 
-    $('.slider__tab p span').on('click', function() {
-        var rel = $(this).attr('rel');
+    $('.slider__tab p span').on('click', (e) => {
+        let $this = $(e.currentTarget);
+        let rel = $this.attr('rel');
         $('.title_public').hide();
         $('.' + rel).show();
         $('.slider__tab p span').removeClass('active');
-        $(this).addClass('active');
+        $this.addClass('active');
         $('.slider__products .slick-public').css({
             'opacity': "0",
             'z-index': '0'
