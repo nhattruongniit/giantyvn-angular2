@@ -22,10 +22,10 @@ export class HeaderComponent implements OnInit {
         $(this).find('>a').removeClass('hover');
     });
     // menu for mobile
-    $('body, html').find('.navbar-toggle').click(() => {
+    $('body, html').find('.navbar-toggle').click( () => {
         $('.header__menu').toggleClass('in');
     });
-    $('body, html').find('.arrow-mobile').click((e) => {
+    $('body, html').find('.arrow-mobile').click( (e) => {
         let $this = $(e.currentTarget);
         $this.find(".caret").toggleClass('display');
         $this.siblings('.header__submenu').toggleClass('display');
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     });
 
     /* === START MENU HEADER === */
-    var scrolllTop = $(window).scrollTop();
+    let scrolllTop = $(window).scrollTop();
     if (scrolllTop > 0) {
         $('.header').addClass("fixed");
         $('.header__logo--pc').addClass("header__logo--change");
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     }
 
     $(window).scroll(function() {
-        var scrollChange = $(window).scrollTop();
+        let scrollChange = $(window).scrollTop();
         if (scrollChange > 0) {
             $('.header').addClass("fixed");
             $('.header__logo--pc').addClass("header__logo--change");

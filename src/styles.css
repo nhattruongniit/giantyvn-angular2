@@ -1292,17 +1292,20 @@ h1 {
 
 /*=== START OWL CAROUSEL ===*/
 
-.owl-next,
-.owl-prev {
+.slick-next,
+.slick-prev {
     display: inline-block;
     text-indent: -9999px;
     position: absolute;
     height: 32px;
     top: 50%;
     margin-top: -16px;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
 }
 
-.owl-next {
+.slick-next {
     right: 0px;
     background-image: url("/assets/images/spritesheet.png");
     background-repeat: no-repeat;
@@ -1311,7 +1314,7 @@ h1 {
     height: 32px;
 }
 
-.owl-prev {
+.slick-prev {
     left: 0px;
     background-image: url("/assets/images/spritesheet.png");
     background-repeat: no-repeat;
@@ -1626,12 +1629,12 @@ h1 {
 /*------------------------Benifit------------------*/
 
 .owl--public {
-    display: none;
+    display: block;
 }
 
 .owl--benefit .loading {
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     background: transparent;
 }
 
@@ -1753,21 +1756,22 @@ h1 {
     -ms-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    opacity: 0;
 }
 
-.popup_slider .owl-prev {
+.popup_slider .slick-prev {
     left: -40px;
 }
 
-.popup_slider .owl-prev.disabled {
+.popup_slider .slick-prev.disabled {
     display: none;
 }
 
-.popup_slider .owl-next {
+.popup_slider .slick-next {
     right: -40px;
 }
 
-.popup_slider .owl-next.disabled {
+.popup_slider .slick-next.disabled {
     display: none;
 }
 
@@ -3099,6 +3103,13 @@ app-loading {
 /*=== END LOADING ===*/
 
 
+/*========= PAGE BENEFIT ===========*/
+
+.owl-carousel.owl-loaded {
+    display: block;
+}
+
+
 /*Responsive*/
 
 @media screen and (max-width: 1600px) {
@@ -3404,8 +3415,8 @@ footer .security ul li a.active {
         padding: 0px 50px;
         margin: 30px 0px 0px 0px;
     }
-    .owl-products-games .owl-next,
-    .owl-products-games .owl-prev {
+    .owl-products-games .slick-next,
+    .owl-products-games .slick-prev {
         top: 30%;
     }
     .owl-products-apps .col-lg-4 {
@@ -3774,10 +3785,10 @@ footer .security ul li a.active {
     .message .img_CEO img {
         width: 200px;
     }
-    .popup_slider .owl-next {
+    .popup_slider .slick-next {
         right: 0px;
     }
-    .popup_slider .owl-prev {
+    .popup_slider .slick-prev {
         left: 0px;
     }
     .jobs_advice .wizard .nav-tabs li span {
@@ -3809,8 +3820,8 @@ footer .security ul li a.active {
     .owl-products-apps img {
         width: 30%;
     }
-    .owl-products-apps .owl-next,
-    .owl-products-apps .owl-prev {
+    .owl-products-apps .slick-next,
+    .owl-products-apps .slick-prev {
         top: 60%;
     }
     .contacts .contacts-item {
@@ -3862,11 +3873,11 @@ footer .security ul li a.active {
     .slider__wrapper {
         min-height: 425px;
     }
-    #owl-games .owl-prev {
+    #owl-games .slick-prev {
         left: 2%;
         top: 58%;
     }
-    #owl-games .owl-next {
+    #owl-games .slick-next {
         right: 2%;
         top: 58%;
     }
@@ -4076,8 +4087,8 @@ footer .security ul li a.active {
     .benefit__information p {
         margin: 0px;
     }
-    .model2D .owl-next,
-    .model2D .owl-prev {
+    .model2D .slick-next,
+    .model2D .slick-prev {
         top: 44%;
     }
     .cloud h2,
@@ -4088,8 +4099,8 @@ footer .security ul li a.active {
     .owl-products-games img {
         width: 100%;
     }
-    .owl-products-games .owl-next,
-    .owl-products-games .owl-prev {
+    .owl-products-games .slick-next,
+    .owl-products-games .slick-prev {
         top: 19%;
     }
     .owl-products-games .last-slider img {

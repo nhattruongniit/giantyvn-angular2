@@ -1,0 +1,34 @@
+<form name="userForm">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Tên của bạn*" required="" maxlength="50" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Email*" maxlength="60" autocomplete="off">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <input type="text" name="phone" class="form-control" placeholder="Số điện thoại*" autocomplete="off">
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.phone.$invalid &amp;&amp; !userForm.phone.$pristine }">
+            <select class="form-control" name="position">
+                <option  value="" class="position_category" disabled="disabled">Khối Kỹ thuật</option>
+                <option value="BACK-END JAVA DEVELOPER" >BACK-END JAVA DEVELOPER</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div>
+            <div class="attachment">
+                <input class="input-file" id="cv-input" type="file" accept="application/pdf,application/msword">
+                <label tabindex="0" for="my-file" class="input-file-trigger">Đính kèm CV</label>
+                <p class="file-required">doc, docx, pdf &lt; 5MB</p>
+                <p class="cvMessage"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 text-center">
+        <button type="submit" class="btn btn-primary btnApply">Ứng tuyển</button>
+    </div>
+</form>

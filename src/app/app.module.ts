@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
+import { FormJoinComponent } from './form-join/form-join.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoadingComponent } from './loading/loading.component';
     PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    LoadingComponent
+    LoadingComponent,
+    FormJoinComponent
   ],
   imports: [
     BrowserModule,

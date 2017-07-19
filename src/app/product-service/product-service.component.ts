@@ -21,23 +21,7 @@ export class ProductServiceComponent implements OnInit {
   }  
   
   ngAfterViewInit(){
-    $(".owl-products").slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll:1,
-      cssEase: 'ease-in-out',
-      autoplay:false,
-      autoplaySpeed: 1000,
-      draggable: true,
-      focusOnSelect: false,
-      pauseOnFocus: false,
-      pauseOnHover: false,
-      arrows:false,      
-      dots: true,
-      nav:false,
-      lazyLoad: 'ondemand',
-    });
-
+    //routing
     this.sub = this.route.params.subscribe(params => {   
       this.alias = params.alias;
       let scrollTop = (name) => {
@@ -72,6 +56,23 @@ export class ProductServiceComponent implements OnInit {
         }
       }
     });      
+
+    $(".owl-products").slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll:1,
+      cssEase: 'ease-in-out',
+      autoplay:false,
+      autoplaySpeed: 1000,
+      draggable: true,
+      focusOnSelect: false,
+      pauseOnFocus: false,
+      pauseOnHover: false,
+      arrows:false,      
+      dots: true,
+      nav:false,
+      lazyLoad: 'ondemand',
+    });    
   }
 
   
