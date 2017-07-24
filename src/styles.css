@@ -119,6 +119,10 @@ li {
     list-style-type: circle !important;
 }
 
+.help-block {
+    color: #a94442;
+}
+
 input {
     outline: none;
 }

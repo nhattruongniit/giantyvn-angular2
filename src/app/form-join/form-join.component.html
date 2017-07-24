@@ -1,17 +1,20 @@
-<form name="userForm">
+<form name="userForm" (ngSubmit)="applyFunc(userForm.value.name)" #userForm="ngForm" novalidate>
     <div class="col-lg-6">
         <div class="form-group">
-            <input type="text" name="name" class="form-control" placeholder="Tên của bạn*" required="" maxlength="50" autocomplete="off">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Tên của bạn*" autocomplete="off" [(ngModel)]="model.name" required #name="ngModel">
+            <p *ngIf="userForm.submitted && !name.valid" class="help-block">Vui lòng điền tên bạn</p>
         </div>
         <div class="form-group">
-            <input type="email" name="email" class="form-control" placeholder="Email*" maxlength="60" autocomplete="off">
+            <input type="email" name="email" class="form-control" placeholder="Email*" autocomplete="off" required [(ngModel)]="model.email" required #email="ngModel">
+            <p *ngIf="userForm.submitted && !email.valid" class="help-block">Vui lòng điền email của bạn (someone@something.domain)</p>
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
-            <input type="text" name="phone" class="form-control" placeholder="Số điện thoại*" autocomplete="off">
+            <input type="text" name="phone" class="form-control" placeholder="Số điện thoại*" autocomplete="off" required [(ngModel)]="model.phone" required #phone="ngModel">
+            <p *ngIf="userForm.submitted && !phone.valid" class="help-block">Vui lòng điền số điện thoại</p>
         </div>
-        <div class="form-group" ng-class="{ 'has-error' : userForm.phone.$invalid &amp;&amp; !userForm.phone.$pristine }">
+        <div class="form-group">
             <select class="form-control" name="position">
                 <option  value="" class="position_category" disabled="disabled">Khối Kỹ thuật</option>
                 <option value="BACK-END JAVA DEVELOPER" >BACK-END JAVA DEVELOPER</option>
@@ -29,6 +32,6 @@
         </div>
     </div>
     <div class="col-lg-12 text-center">
-        <button type="submit" class="btn btn-primary btnApply">Ứng tuyển</button>
+        <button type="submit" class="btn btn-primary btnApply" [disabled]="!userForm.form.valid">Ứng tuyển</button>
     </div>
 </form>
