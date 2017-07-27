@@ -23,12 +23,22 @@
             <div class="col-lg-12 list_jobs_detail">
                 <h2>Vị trí đang tuyển</h2>
                 <p class="container text-center job_processing">
-                    Đang xử lý... <img src="images/loading_36.svg">
+                    Đang xử lý... <img src="assets/images/loading_36.svg">
                 </p>
                 <ul class="list_jobs_detail col-lg-12">
-                    <h4 class="noJobs"></h4>
-                    <li>
-
+                    <h4 class="job__message--nojob">
+                        Cảm ơn bạn đã quan tâm đến cơ hội nghề nghiệp tại <strong>Gianty</strong>. Rất tiếc hiện tại chúng tôi không tuyển vị trí nào. Nhưng bạn có thể để lại thông tin <a routerLink="/jobs/join-us">bên dưới</a> nếu có vị trí phù hợp chúng
+                        tôi sẽ liên hệ. Cảm ơn bạn rất nhiều!
+                    </h4>
+                    <li class="row" *ngFor="let job of listJob">
+                        <a id="{{job._id}}">
+                            <h4 class="col-lg-6 col-sm-4 col-xs-3 font-weight-500">{{job.name}}</h4>
+                            <div class="col-lg-2 col-sm-2 col-xs-2">
+                                <p>{{statusJob}}</p>
+                            </div>
+                            <h5 class="col-lg-2 col-sm-3 col-xs-4">{{job.position}}/{{job.workLevel}}</h5>
+                            <button class="col-lg-2 col-sm-3 col-xs-3" id="{{job._id}}" translate="job__button--apply">Ứng tuyển</button>
+                        </a>
                     </li>
                 </ul>
             </div>

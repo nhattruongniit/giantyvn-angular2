@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 // routing
 import { AppRoutingModule } from './app.routing';
@@ -14,12 +15,12 @@ import { StrengthsComponent } from './strengths/strengths.component';
 import { BenefitComponent } from './benefit/benefit.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { ContactComponent } from './contact/contact.component';
-import { PrivacyComponent } from './privacy/privacy.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FormJoinComponent } from './form-join/form-join.component';
+import { TermOfUseComponent } from './term-of-use/term-of-use.component';
 
 @NgModule({
   declarations: [
@@ -31,17 +32,18 @@ import { FormJoinComponent } from './form-join/form-join.component';
     BenefitComponent,
     JobsComponent,
     ContactComponent,
-    PrivacyComponent,
     PageNotFoundComponent,
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    FormJoinComponent
+    FormJoinComponent,
+    TermOfUseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

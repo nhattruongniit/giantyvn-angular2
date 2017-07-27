@@ -8,7 +8,6 @@ import 'slick-carousel/slick/slick';
 declare let require: any;
 require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
 require('../../../node_modules/venobox/venobox/venobox.min.js');
-require('../../../node_modules/isotope-layout/dist/isotope.pkgd.min.js');
 
 @Component({
   selector: 'app-strengths',

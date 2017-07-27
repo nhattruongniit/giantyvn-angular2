@@ -1971,14 +1971,14 @@ h1 {
     color: #fff;
 }
 
-.list_jobs .list_jobs_detail ul .noJobs {
+.list_jobs .list_jobs_detail ul .job__message--nojob {
     text-align: center;
     display: none;
 }
 
-.list_jobs .list_jobs_detail ul .noJobs a {
-    color: #3DC480;
-    cursor: pointer;
+.list_jobs .list_jobs_detail ul .job__message--nojob a {
+    color: #3c4f8c;
+    text-decoration: underline;
 }
 
 .list_jobs .list_jobs_detail ul .noJobs.err {
@@ -3186,7 +3186,8 @@ app-loading {
 /*--- footer ---*/
 
 footer .security ul li a.active {
-    border-bottom: 1px solid rgba(11, 10, 10, 0.5);
+    color: #3c4f8c;
+    font-weight: 500;
 }
 
 @media screen and (max-width: 1280px) {

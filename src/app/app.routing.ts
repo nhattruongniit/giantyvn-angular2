@@ -10,7 +10,7 @@ import { StrengthsComponent } from './strengths/strengths.component';
 import { BenefitComponent } from './benefit/benefit.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { ContactComponent } from './contact/contact.component';
-import { PrivacyComponent } from './privacy/privacy.component';
+import { TermOfUseComponent } from './term-of-use/term-of-use.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
@@ -23,8 +23,9 @@ const appRoutes: Routes = [
   { path: 'strengths/:alias', component: StrengthsComponent},
   { path: 'benefit', component: BenefitComponent},
   { path: 'jobs', component: JobsComponent},
+  { path: 'jobs/:alias', component: JobsComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'privacy', component: PrivacyComponent},
+  { path: 'term-of-use', component: TermOfUseComponent},
   { path: '**', component: PageNotFoundComponent},
 ];
 

@@ -1,4 +1,4 @@
-<form name="userForm" (ngSubmit)="applyFunc(userForm.value.name)" #userForm="ngForm" novalidate>
+<form name="userForm" (ngSubmit)="applyFunc(userForm.value.name, userForm.value.email, userForm.value.phone)" #userForm="ngForm" novalidate>
     <div class="col-lg-6">
         <div class="form-group">
             <input type="text" id="name" name="name" class="form-control" placeholder="Tên của bạn*" autocomplete="off" [(ngModel)]="model.name" required #name="ngModel">
